@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Market - Administración de usuarios</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div>
+          <p class="eyebrow">Sistema principal</p>
+          <h1>Administrador de usuarios e inicio de sesión</h1>
+        </div>
+        <button id="logoutButton" class="button ghost hidden" type="button">
+          Cerrar sesión
+        </button>
+      </header>
+
+      <section id="loginSection" class="card">
+        <h2>Iniciar sesión</h2>
+        <p class="muted">
+          Ingresa con tu usuario y contraseña. Si no existe el usuario, pide al
+          administrador que te registre.
+        </p>
+        <div class="login-hint">
+          <p class="muted">
+            Credenciales por defecto: <strong>admin</strong> /
+            <strong>admin123</strong>.
+          </p>
+          <button id="resetSeedButton" class="button ghost" type="button">
+            Restaurar usuario admin
+          </button>
+        </div>
+        <form id="loginForm" class="grid" autocomplete="off">
+          <label>
+            Usuario
+            <input id="loginUsername" name="username" type="text" required />
+          </label>
+          <label>
+            Contraseña
+            <input
+              id="loginPassword"
+              name="password"
+              type="password"
+              required
+            />
+          </label>
+          <button class="button primary" type="submit">Entrar</button>
+        </form>
+        <p id="loginMessage" class="message" role="status"></p>
+      </section>
+
+      <section id="adminSection" class="card hidden">
+        <div class="section-header">
+          <div>
+            <h2>Administración de usuarios</h2>
+            <p class="muted">
+              Crea, actualiza o elimina usuarios. Usa roles para controlar el
+              acceso.
+            </p>
+          </div>
+          <div class="badge" id="activeUserBadge"></div>
+        </div>
+
+        <form id="userForm" class="grid">
+          <label>
+            Nombre completo
+            <input id="fullName" name="fullName" type="text" required />
+          </label>
+          <label>
+            Usuario
+            <input id="username" name="username" type="text" required />
+          </label>
+          <label>
+            Contraseña
+            <input id="password" name="password" type="password" required />
+          </label>
+          <label>
+            Rol
+            <select id="role" name="role" required>
+              <option value="admin">Administrador</option>
+              <option value="editor">Editor</option>
+              <option value="viewer">Consulta</option>
+            </select>
+          </label>
+          <div class="actions">
+            <button id="saveButton" class="button primary" type="submit">
+              Guardar usuario
+            </button>
+            <button id="cancelButton" class="button ghost" type="button">
+              Cancelar edición
+            </button>
+          </div>
+        </form>
+        <p id="userMessage" class="message" role="status"></p>
+
+        <div class="table">
+          <div class="table-row header">
+            <span>Nombre</span>
+            <span>Usuario</span>
+            <span>Rol</span>
+            <span>Acciones</span>
+          </div>
+          <div id="userList"></div>
+          <p id="emptyState" class="muted hidden">
+            No hay usuarios registrados. Agrega el primero con el formulario.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
